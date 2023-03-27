@@ -2,7 +2,7 @@ const Expressoes = () => {
   const name: string = 'João';
   const age: number = 22;
 
-  function presentation(name: string, age: number) {
+  const presentation = (name: string, age: number) => {
     return `me chamo ${name} e possuo ${age} anos!`;
   }
 
