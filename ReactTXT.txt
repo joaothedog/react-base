@@ -1,0 +1,19 @@
+O que é um componente? 
+
+É uma função que retorna (geralmente) algo gráfico, mas nem sempre.
+Div, botão, templates, enfim... Conceito de reutilização de código.
+
+O que é o JSX?
+
+Basicamente é uma forma, mais fácil, de codar. Através da transformação do HTML em JS.
+A forma antiga era utilizando o recurso createElement(). Importando o React.
+A conversão ocorre pelo Babel, transpilador de código.
+
+O que são expressões no JSX?
+
+Utilização de variáveis, funções ou qualquer coisa do JS dentro de uma propriedade HTML.
+
+O que são Props?
+
+Atributos que eu gostaria de passar em um componente. Ou por exemplo, fazendo uma alusão, 
+atributos de um elemento HTML.
