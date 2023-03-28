@@ -1,22 +1,22 @@
-import Pessoa from "./components/Pessoa";
+import { useState } from "react";
 
 function App() {
+  const [showMsg, setShowMsg] = useState(false)
 
-  let array = [
-    {name: 'joao', age: 10},
-    {name: 'pedro', age: 20},
-    {name: 'maria', age: 30},
-    {name: 'carlinha', age: 40},
-  ];
+  const handleClickShowMsg = () => {
+    setShowMsg(!showMsg);
+  }
 
   return (
     <div>
-      <h1>Lista de presença</h1>
-      <ul>
-        {array.map((item, key) => (
-          <Pessoa data={item} key={key}/>
-        ))}
-      </ul>
+      <button onClick={handleClickShowMsg}>{showMsg ? 'Logout' : 'Login'}</button>
+
+      <div>Faça login no nosso sistema!</div>
+
+      {showMsg && 
+        <div>Você efetuou o login no sistema</div>
+      }
+
     </div>
   )
 }
