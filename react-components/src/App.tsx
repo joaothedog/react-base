@@ -1,15 +1,22 @@
-import React, { useState } from "react";
-import Button from "./components/Button";
+import Pessoa from "./components/Pessoa";
 
 function App() {
 
-  const handleEventButton = (msg: string) => {
-    alert('App component: ' + msg)
-  }
+  let array = [
+    {name: 'joao', age: 10},
+    {name: 'pedro', age: 20},
+    {name: 'maria', age: 30},
+    {name: 'carlinha', age: 40},
+  ];
 
   return (
     <div>
-      <Button clickFn={handleEventButton} textButton="Clique" />
+      <h1>Lista de presença</h1>
+      <ul>
+        {array.map((item, key) => (
+          <Pessoa data={item} key={key}/>
+        ))}
+      </ul>
     </div>
   )
 }
