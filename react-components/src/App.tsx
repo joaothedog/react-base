@@ -1,29 +1,15 @@
 import React, { useState } from "react";
+import Button from "./components/Button";
 
 function App() {
-  const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
-  const [idade, setIdade] = useState(0);
 
-  // const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-  //   setNome(e.target.value);
-  // }
+  const handleEventButton = (msg: string) => {
+    alert('App component: ' + msg)
+  }
 
   return (
     <div>
-      Nome:
-      <input type='text' value={nome} onChange={(e) => setNome(e.target.value)}/>
-      <br/>
-      Sobrenome:
-      <input type='text' value={sobrenome} onChange={(e) => setSobrenome(e.target.value)}/>
-      <br/>
-      Idade:
-      <input type='text' value={idade} onChange={(e) => setIdade(parseInt(e.target.value))}/>
-      <hr/>
-      Olá {nome} {sobrenome}, tudo bem?
-      <br/>
-      Você tem {idade} anos.
-      
+      <Button clickFn={handleEventButton} textButton="Clique" />
     </div>
   )
 }
