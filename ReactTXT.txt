@@ -1,3 +1,13 @@
+Inicializar um projeto CRA?
+
+npx create-react-app react-cra-app --template typescript
+
+Inicializar um projeto Vite?
+
+npm create vite@latest my-react-app --template react-ts (npmp 6.x+)
+
+npm create vite@latest my-react-app -- --template react-ts (npm 7+)
+
 O que é um componente? 
 
 É uma função que retorna (geralmente) algo gráfico, mas nem sempre.

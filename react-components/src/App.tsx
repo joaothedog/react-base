@@ -1,22 +1,21 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function App() {
-  const [num, setNum] = useState(0);
+  const [nome, setNome] = useState('');
 
-  const handleSub = () => {
-    num > 0 ? setNum(num-1) : setNum(num);
-  }
-
-  const handleAdd = () => {
-    setNum(num+1);
-  }
+  // const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+  //   setNome(e.target.value);
+  // }
 
   return (
     <div>
-      <h1>Contador</h1>
-      <button onClick={handleSub}>-</button>
-      <button>{num}</button>
-      <button onClick={handleAdd}>+</button>
+      Nome:
+      <input 
+        value={nome} 
+        onChange={e => {setNome(e.target.value)}} 
+        type='text' />
+      <p>Meu nome é: {nome}</p>
+      
     </div>
   )
 }
