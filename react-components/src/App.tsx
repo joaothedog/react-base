@@ -1,23 +1,11 @@
-import { useState } from "react";
+import * as C from './AppStyles';
 
 function App() {
-  const [showMsg, setShowMsg] = useState(false)
-
-  const handleClickShowMsg = () => {
-    setShowMsg(!showMsg);
-  }
-
   return (
-    <div>
-      <button onClick={handleClickShowMsg}>{showMsg ? 'Logout' : 'Login'}</button>
-
-      <div>Faça login no nosso sistema!</div>
-
-      {showMsg && 
-        <div>Você efetuou o login no sistema</div>
-      }
-
-    </div>
+    <C.Container bgColor="#ff00ff">
+      <C.Button bgColor="#ff0000">Olá</C.Button>
+      <C.Button bgColor="#00ff00"small>Olá2</C.Button>
+    </C.Container>
   )
 }
 
