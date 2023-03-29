@@ -27,3 +27,9 @@ O que são Props?
 
 Atributos que eu gostaria de passar em um componente. Ou por exemplo, fazendo uma alusão, 
 atributos de um elemento HTML.
+
+O que é Ciclo de Vida de um componente?
+
+A cada etapa, existe uma ação que é executada. 
+(Criado na memória => 1 Etapa, renderizado => 2 Etapa [states geram mudanças, geram etapas],
+remoção do componente da memória => 3 Etapa [fim, 💀]).
