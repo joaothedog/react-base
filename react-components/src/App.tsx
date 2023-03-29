@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [name, setName] = useState('João');
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [fullName, setFullName] = useState('')
 
   useEffect(() => {
-    alert(`O novo valor da variável ${name}`)
-  }, [name])
-
-  const handleClick = () => {
-    name === 'João' ? setName('Pedro') : setName('João');
-  }
+    setFullName(`${name} ${lastName}`);
+  }, [name, lastName])
 
   return (
     <div>
-      o meu nome é: {name}
-      <hr/>
-      <button onClick={handleClick}>Click</button>
+      <input type='text' value={name} placeholder='Digite seu nome' onChange={(e) => setName(e.target.value)}/>
+      <input type='text' value={lastName} placeholder='Digite sobrenome' onChange={(e) => setLastName(e.target.value)}/>
+      Nome completo: {fullName}
     </div>
   )
 }
