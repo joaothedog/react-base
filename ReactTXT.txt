@@ -33,3 +33,8 @@ O que é Ciclo de Vida de um componente?
 A cada etapa, existe uma ação que é executada. 
 (Criado na memória => 1 Etapa, renderizado => 2 Etapa [states geram mudanças, geram etapas],
 remoção do componente da memória => 3 Etapa [fim, 💀]).
+
+Qual é a diferença entre Backend e Frontend?
+
+Ou seja, o back-end resume-se a tudo o que está por trás do site, que o usuário/leitor não tem acesso direto e não consegue interagir. 
+Já o front-end corresponde à parte em que os usuários conseguem ver e interagir, como cores, fontes, menus, imagens entre outras funcionalidades.
