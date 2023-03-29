@@ -1,12 +1,22 @@
-import * as C from './AppStyles';
+import { useEffect, useState } from "react";
 
 function App() {
+  const [name, setName] = useState('João');
+
+  useEffect(() => {
+    alert(`O novo valor da variável ${name}`)
+  }, [name])
+
+  const handleClick = () => {
+    name === 'João' ? setName('Pedro') : setName('João');
+  }
+
   return (
-    <C.Container bgColor="blue">
-      <span>Texto</span>
-      <C.Button bgColor="#ff0000" small>Olá</C.Button>
-      <C.Button bgColor="#00ff00" small>Olá2</C.Button>
-    </C.Container>
+    <div>
+      o meu nome é: {name}
+      <hr/>
+      <button onClick={handleClick}>Click</button>
+    </div>
   )
 }
 
