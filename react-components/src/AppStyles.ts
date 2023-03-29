@@ -16,4 +16,10 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   background-color: ${props => props.bgColor};
   color: white;
+  max-width: 600px;
+  margin: auto;
+
+  @media (max-width: 500px) {
+    background-color: green;
+  }
 `;
