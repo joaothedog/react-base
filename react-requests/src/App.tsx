@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
+import { Movie } from "./types/Movie";
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-  useEffect(() => {
-    fetch('https://api.b7web.com.br/cinema/')
-      .then((res) => {
-        return res.json();
-      }).then((json)=>{
-        setMovies(json);
-      });
-  }, [movies])
-
-  const handleLoadMovies = () => {
+  const getMovies = () => {
     fetch('https://api.b7web.com.br/cinema/')
       .then((res) => {
         return res.json();
       })
       .then((json)=>{
         setMovies(json);
-      });
+      })
+  }
+
+  useEffect(() => {
+    // getMovies();
+  }, [movies])
+
+  const handleLoadMovies = () => {
+    getMovies();
   }
 
   return(
@@ -28,8 +28,13 @@ const App = () => {
       <hr/>
 
       Total de filmes: {movies.length}
-      <div>
-        
+      <div style={{ display: 'flex', flexDirection: 'row'}}>
+        {movies.map((item, key) => (
+          <div key={key}>
+            <img src={item.avatar} style={{width: 120}}/>
+            {item.titulo}
+          </div>
+        ))}
       </div>
     </div>
   );
