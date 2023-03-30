@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
+import Filmes from "./components/Filmes";
 import { Movie } from "./types/Movie";
 
 const App = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
-  const getMovies = () => {
-    fetch('https://api.b7web.com.br/cinema/')
-      .then((res) => {
-        return res.json();
-      })
-      .then((json)=>{
-        setMovies(json);
-      })
+  // const getMovies = () => {
+  //   fetch('https://api.b7web.com.br/cinema/')
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((json)=>{
+  //       setMovies(json);
+  //     })
+  // }
+
+  const getMovies = async () => {
+    let res = await fetch('https://api.b7web.com.br/cinema/');
+    let json = await res.json();
+    setMovies(json);
   }
 
   useEffect(() => {
@@ -30,10 +37,7 @@ const App = () => {
       Total de filmes: {movies.length}
       <div style={{ display: 'flex', flexDirection: 'row'}}>
         {movies.map((item, key) => (
-          <div key={key}>
-            <img src={item.avatar} style={{width: 120}}/>
-            {item.titulo}
-          </div>
+          <Filmes data={item} key={key}/>
         ))}
       </div>
     </div>
