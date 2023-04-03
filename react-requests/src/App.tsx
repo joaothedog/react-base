@@ -1,53 +1,43 @@
-import { useEffect, useState } from "react";
-import Filmes from "./components/Filmes";
-import { Movie } from "./types/Movie";
+import { useEffect, useReducer, useState } from "react";
+import { Post } from "./types/Post";
+import Posts from "./components/Posts";
 
 const App = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(false);
 
-  const getMoviesTwo = () => {
-    fetch('https://api.b7web.com.br/cinema/').then((res) => {
-      return res.json();
-    }).then((json) => {
-      setMovies(json);
-    })
+  const getPosts = async () => {
+    setLoading(true);
+    let res = await fetch('https://jsonplaceholder.typicode.com/posts/');
+    let json = await res.json();
+    setPosts(json);
+    setLoading(false);
   }
 
-
-  const getMovies = async () => {
-    try {
-      setLoading(true)
-      let res = await fetch('https://api.b7web.com.br/cinema/');
-      let json = await res.json();
-      setMovies(json);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      alert('Erro, tente novamente!')
-      console.log(error);
-    }
-    
-  }
 
   useEffect(() => {
-    getMovies();
+    getPosts();
   }, [])
 
 
   return(
     <div>
+      {loading &&
+      <div>Carregando...</div>}
       <hr/>
-
-      Total de filmes: {loading && movies.length > 0 ? 'Carregando total de filmes...' : movies.length}
-      {!loading &&
-        <div style={{ display: 'flex', flexDirection: 'row'}}>
-          {movies.map((item, key) => (
-            <Filmes data={item} key={key}/>
+      {!loading && posts.length > 0 &&
+      <>
+        <div>Total de posts: {posts.length}</div>
+        <div>
+          {posts.map((item, key) => (
+            <div style={{marginBottom: 10}}>
+              <Posts key={key} data={item}/>  
+            </div>
           ))}
         </div>
-      }
+      </>}
       
+
     </div>
   );
 }
