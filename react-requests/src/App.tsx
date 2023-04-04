@@ -5,6 +5,8 @@ import Posts from "./components/Posts";
 const App = () => {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(false);
+  const [addTitlePost, setAddTitlePost] = useState('');
+  const [addBodyPost, setAddBodyPost] = useState('');
 
   const getPosts = async () => {
     setLoading(true);
@@ -14,6 +16,30 @@ const App = () => {
     setLoading(false);
   }
 
+  const handleAddPost = async () => {
+    if(addTitlePost && addBodyPost) {
+      let res = await fetch('https://jsonplaceholder.typicode.com/posts/', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: addTitlePost,
+          body: addBodyPost,
+          userId: 1
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      let json = await res.json();
+      
+      if(json.id) {
+        alert('Post adicionado com sucesso');
+      } else {
+        alert('Ocorreu algum problema! =(')
+      }
+    } else { 
+      alert('Preencha os campos!');
+    }
+  }
 
   useEffect(() => {
     getPosts();
@@ -22,6 +48,12 @@ const App = () => {
 
   return(
     <div>
+      <fieldset style={{marginBottom: 10, display: 'flex', flexDirection: 'column', maxWidth: 500, margin: 'auto', padding: 20}}>
+        <legend>Adicionar um post</legend>
+        <input value={addTitlePost} onChange={(e) => {setAddTitlePost(e.target.value)}} type="text" placeholder="Título do post" />
+        <textarea value={addBodyPost} onChange={(e) => {setAddBodyPost(e.target.value)}}></textarea>
+        <button onClick={handleAddPost}>Adicionar</button>
+      </fieldset>
       {loading &&
       <div>Carregando...</div>}
       <hr/>
@@ -30,8 +62,8 @@ const App = () => {
         <div>Total de posts: {posts.length}</div>
         <div>
           {posts.map((item, key) => (
-            <div style={{marginBottom: 10}}>
-              <Posts key={key} data={item}/>  
+            <div key={key} style={{marginBottom: 10}}>
+              <Posts data={item}/>  
             </div>
           ))}
         </div>
