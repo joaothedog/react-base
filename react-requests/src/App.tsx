@@ -1,44 +1,33 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { Post } from "./types/Post";
 import { PostForm } from "./components/Forms/Post/PostForm";
 import PostItem from "./components/Forms/Post/PostItem";
+import { API } from "./services/api";
+
 
 
 const App = () => {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(false);
 
-  const getPosts = async () => {
-    setLoading(true);
-    let res = await fetch('https://jsonplaceholder.typicode.com/posts/');
-    let json = await res.json();
-    setPosts(json);
-    setLoading(false);
-  }
-
   useEffect(() => {
     getPosts();
   }, [])
 
+  const getPosts = async () => {
+    setLoading(true);
+    let json = await API.getAllPosts();
+    setPosts(json);
+    setLoading(false);
+  }
+
   const handleAdd = async (title: string, body: string) => {
-      let res = await fetch('https://jsonplaceholder.typicode.com/posts/', {
-        method: 'POST',
-        body: JSON.stringify({
-          title: title,
-          body: body,
-          userId: 1
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      let json = await res.json();
-      
-      if(json.id) {
+    let json = await API.addNewPost(title, body, 1);
+    if(json) {
         alert('Post adicionado com sucesso');
-      } else {
+    } else {
         alert('Ocorreu algum problema! =(');
-      }
+    }
   }
 
   return(
