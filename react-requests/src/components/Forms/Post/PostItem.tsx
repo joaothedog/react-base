@@ -1,12 +1,12 @@
-import { Post } from "../../types/Post";
+import {Post} from '../../../types/Post';
 
 interface PropsPosts {
   data: Post,
 }
 
-const Posts = ({data} : PropsPosts) => {
+const PostItem = ({data} : PropsPosts) => {
   return(
-    <div>
+    <div style={{marginBottom: 30}}>
       <h3>{data.title}</h3>
       #{data.id} - User: {data.userId}
       <p>{data.body}</p>
@@ -14,4 +14,4 @@ const Posts = ({data} : PropsPosts) => {
   );
 }
 
-export default Posts;
+export default PostItem;
