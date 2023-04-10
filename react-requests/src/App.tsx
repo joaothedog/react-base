@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Post } from "./types/Post";
 import { PostForm } from "./components/Forms/Post/PostForm";
 import PostItem from "./components/Forms/Post/PostItem";
-import { API } from "./services/api";
+import { API } from "./API";
 
 
 
