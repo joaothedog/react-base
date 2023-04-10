@@ -23,7 +23,7 @@ const App = () => {
 
   const handleAdd = async (title: string, body: string) => {
     let json = await API.addNewPost(title, body, 1);
-    if(json) {
+    if(json.id) {
         alert('Post adicionado com sucesso');
     } else {
         alert('Ocorreu algum problema! =(');

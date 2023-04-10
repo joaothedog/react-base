@@ -38,3 +38,7 @@ Qual é a diferença entre Backend e Frontend?
 
 Ou seja, o back-end resume-se a tudo o que está por trás do site, que o usuário/leitor não tem acesso direto e não consegue interagir. 
 Já o front-end corresponde à parte em que os usuários conseguem ver e interagir, como cores, fontes, menus, imagens entre outras funcionalidades.
+
+O que são reducers?
+
+Em casos que mais de uma state é manipulada, ou vários valores. Geralmente utilizado em listas
